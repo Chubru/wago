@@ -1,0 +1,54 @@
+sudo apt install software-properties-common curl
+sudo add-apt-repository ppa:git-core/ppa
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt install git-lfs
+
+cd ~
+mkdir -p wago/ptxproj/
+cd wago/ptxproj/
+git clone https://github.com/WAGO/pfc-firmware-sdk.git .
+
+
+
+sudo mkdir -p /opt/gcc-Toolchain-2019.12/
+sudo git clone https://github.com/WAGO/gcc-toolchain-2019.12-precompiled.git /opt/gcc-Toolchain-2019.12/
+
+
+
+sudo apt install -y libncurses5-dev gawk flex bison texinfo python-dev g++ dialog libc6-dev lzop autoconf libtool xmlstarlet xsltproc doxygen autopoint python3-setuptools
+
+
+git clone http://github.com/wago/ptxdist.git ~/ptxdist
+
+
+sudo apt install -y make gettext
+
+
+cd ~/ptxdist
+./configure
+
+
+
+
+
+
+
+cd ~/ptxdist
+make
+
+
+
+
+
+cd ~/ptxdist
+sudo make install
+
+cd ~/wago/ptxproj
+ptxdist select configs/wago-pfcXXX/ptxconfig_generic
+
+
+cd ~/wago/ptxproj
+ptxdist platform configs/wago-pfcXXX/platformconfig
+
+cd ~/wago/ptxproj
+ptxdist toolchain /opt/gcc-Toolchain-2019.12/arm-linux-gnueabihf/bin/
