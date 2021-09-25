@@ -1,11 +1,15 @@
+#!/bin/bash
+
 sudo apt install software-properties-common curl
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] 
+then
 echo ERROR
 exit 1
 fi 
 
 
-sudo add-apt-repository ppa:git-core/ppaif [ $? -ne 0 ]; then
+sudo add-apt-repository ppa:git-core/ppa
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -13,7 +17,7 @@ fi
 
 
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -21,7 +25,7 @@ fi
 
 
 sudo apt install git-lfs
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -33,7 +37,7 @@ cd ~
 mkdir -p wago/ptxproj/
 cd wago/ptxproj/
 git clone https://github.com/WAGO/pfc-firmware-sdk.git .
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -43,7 +47,7 @@ fi
 
 sudo mkdir -p /opt/gcc-Toolchain-2019.12/
 sudo git clone https://github.com/WAGO/gcc-toolchain-2019.12-precompiled.git /opt/gcc-Toolchain-2019.12/
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -53,7 +57,7 @@ fi
 
 
 sudo apt install -y libncurses5-dev gawk flex bison texinfo python-dev g++ dialog libc6-dev lzop autoconf libtool xmlstarlet xsltproc doxygen autopoint python3-setuptools
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -61,7 +65,7 @@ fi
 
 
 sudo apt install -y bc #
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -69,7 +73,7 @@ fi
 
 
 git clone http://github.com/wago/ptxdist.git ~/ptxdist
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -78,7 +82,7 @@ fi
 
 
 sudo apt install -y make gettext
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -88,7 +92,7 @@ fi
 
 cd ~/ptxdist
 ./configure
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -103,7 +107,7 @@ fi
 
 cd ~/ptxdist
 make
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -116,7 +120,7 @@ fi
 
 cd ~/ptxdist
 sudo make install
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -125,7 +129,7 @@ fi
 
 cd ~/wago/ptxproj
 ptxdist select configs/wago-pfcXXX/ptxconfig_generic
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -135,7 +139,7 @@ fi
 
 cd ~/wago/ptxproj
 ptxdist platform configs/wago-pfcXXX/platformconfig
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
@@ -144,10 +148,7 @@ fi
 
 cd ~/wago/ptxproj
 ptxdist toolchain /opt/gcc-Toolchain-2019.12/arm-linux-gnueabihf/bin/
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
-
-
-
