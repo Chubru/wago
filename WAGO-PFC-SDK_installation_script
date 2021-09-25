@@ -52,3 +52,6 @@ ptxdist platform configs/wago-pfcXXX/platformconfig
 
 cd ~/wago/ptxproj
 ptxdist toolchain /opt/gcc-Toolchain-2019.12/arm-linux-gnueabihf/bin/
+
+
+sudo apt install -y bc
