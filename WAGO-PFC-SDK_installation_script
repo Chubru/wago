@@ -152,3 +152,14 @@ if [ $? -ne 0 ] ; then
 echo ERROR
 exit 1
 fi 
+
+cd ~/wago/ptxproj
+ptxdist menu
+
+cd ~/wago/ptxproj
+ptxdist menuconfig
+
+cd ~/wago/ptxproj
+ptxdist go -q
+
+
