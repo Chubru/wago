@@ -174,7 +174,6 @@ mv ~/wago ~/wago-g1
 
 cd ~
 mkdir -p wago/ptxproj/
-ln ~/wago ~/wago-g2
 
 cd wago/ptxproj/
 git clone https://github.com/WAGO/pfc-firmware-sdk-G2 .
@@ -215,4 +214,11 @@ ptxdist menuconfig
 
 cd ~/wago/ptxproj
 ptxdist go -q
+if [ $? -ne 0 ] ; then
+echo ERROR
+exit 1
+fi 
+
+mv ~/wago ~/wago-g2
+ln -s ~/wago-g2 ~/wago
 
