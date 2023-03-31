@@ -163,5 +163,56 @@ ptxdist menuconfig
 
 cd ~/wago/ptxproj
 ptxdist go -q
+if [ $? -ne 0 ] ; then
+echo ERROR
+exit 1
+fi 
 
+# g2
+
+mv ~/wago ~/wago-g1
+
+cd ~
+mkdir -p wago/ptxproj/
+ln ~/wago ~/wago-g2
+
+cd wago/ptxproj/
+git clone https://github.com/WAGO/pfc-firmware-sdk-G2 .
+if [ $? -ne 0 ] ; then
+echo ERROR
+exit 1
+fi 
+
+cd ~/wago/ptxproj
+ptxdist select configs/wago-pfcXXX/ptxconfig_pfc_g2_cds3
+if [ $? -ne 0 ] ; then
+echo ERROR
+exit 1
+fi 
+
+
+cd ~/wago/ptxproj
+ptxdist platform configs/wago-pfcXXX/platformconfig
+if [ $? -ne 0 ] ; then
+echo ERROR
+exit 1
+fi 
+
+cd ~/wago/ptxproj
+ptxdist toolchain /opt/gcc-Toolchain-2019.12/arm-linux-gnueabihf/bin/
+if [ $? -ne 0 ] ; then
+echo ERROR
+exit 1
+fi 
+
+cd ~/wago/ptxproj
+ptxdist menu
+
+
+cd ~/wago/ptxproj
+ptxdist menuconfig
+
+
+cd ~/wago/ptxproj
+ptxdist go -q
 
