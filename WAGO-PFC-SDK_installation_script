@@ -2,7 +2,7 @@
 
 sudo apt-get install virtualbox-guest-additions-iso -y
 
-sudo apt install -y software-properties-common curl
+sudo apt install -y software-properties-common curl pkg-config
 if [ $? -ne 0 ] 
 then
 echo ERROR
